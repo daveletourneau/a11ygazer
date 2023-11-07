@@ -6,7 +6,7 @@ import { Offcanvas } from 'bootstrap'
 import ProjectModal from '@/components/ProjectModal.vue'
 
 const menuPanel = ref<Offcanvas | null>(null)
-const modalVisible = ref<boolean>(false)
+const projectModalVisible = ref<boolean>(false)
 
 onMounted(() => {
   const offcanvas_el = document.getElementById('offcanvasMenu')
@@ -22,7 +22,7 @@ function hideMenu() {
 }
 
 function showCreateProjectModal() {
-  modalVisible.value = true
+  projectModalVisible.value = true
 }
 
 </script>
@@ -50,34 +50,43 @@ function showCreateProjectModal() {
     <div class="d-flex flex-column h-100">
       <div class="offcanvas-header">
         <h2
-          class="offcanvas-title fs-5"
+          class="offcanvas-title noafter"
           id="offcanvasMenuLabel"
         >
-          <router-link :to="{ name: 'home' }"><i class="bi bi-house-fill text-primary"></i></router-link>
-          <i class="bi bi-chevron-right"></i>
+          <small><i class="bi bi-archive"></i></small>
+          <!-- <router-link :to="{ name: 'home' }"><i class="bi bi-house-fill text-primary"></i></router-link>
+          <i class="bi bi-chevron-right"></i> -->
           Projets
         </h2>
         <button
           type="button"
-          class="btn-close text-reset"
+          class="btn btn-default"
           data-bs-dismiss="offcanvas"
           aria-label="Fermer"
         >
+          <i class="bi bi-x-lg" aria-hidden="true"></i>
         </button>
       </div>
+      <hr
+        class="border-light opacity-100 my-1"
+        aria-hidden="true"
+      >
       <div class="offcanvas-body">
 
         <!-- Liste des projets -->
         <ProjectList @projectSelected="hideMenu" />
-        <hr aria-hidden="true">
         <!-- Bouton nouveau projet -->
         <div class="d-grid gap-2">
           <button
             type="button"
-            class="btn btn-secondary"
+            class="btn btn-lg btn-default"
             @click="showCreateProjectModal"
           >
-            Créer un projet
+            <span class="text-dark">Créer un projet</span>
+            <i
+              class="bi bi-plus"
+              aria-hidden="true"
+            ></i>
           </button>
         </div>
 
@@ -91,8 +100,7 @@ function showCreateProjectModal() {
     </div>
   </div>
 
-  <ProjectModal
-    v-model="modalVisible"
-    mode="create"
-  />
-</template>
+<ProjectModal
+  v-model="projectModalVisible"
+  mode="create"
+/></template>

@@ -68,6 +68,7 @@ const showProjectModal = () => {
             @click="navigate"
             :aria-current="currentRouteName === 'projectsummary' ? 'page' : false"
           >
+            <i class="bi bi-ui-checks"></i>
             Sommaire
           </button>
         </router-link>
@@ -85,6 +86,7 @@ const showProjectModal = () => {
             @click="navigate"
             :aria-current="currentRouteName === 'projectissues' ? 'page' : false"
           >
+            <i class="bi bi-crosshair2"></i>
             Problèmes
           </button>
         </router-link>
@@ -102,6 +104,7 @@ const showProjectModal = () => {
             @click="navigate"
             :aria-current="currentRouteName === 'projectreport' ? 'page' : false"
           >
+            <i class="bi bi-journal-richtext"></i>
             Rapport
           </button>
         </router-link>
@@ -120,6 +123,7 @@ const showProjectModal = () => {
             :aria-current="currentRouteName === 'projectreport' ? 'page' : false"
             disabled
           >
+            <i class="bi bi-clipboard-check"></i>
             Checklist
           </button>
         </router-link>

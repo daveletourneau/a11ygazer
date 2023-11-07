@@ -8,7 +8,7 @@ $ciao-logo: url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9I
 
 $enable-caret: true;
 $enable-rounded: true;
-$enable-shadows: true;
+$enable-shadows: false;
 $enable-gradients: false;
 $enable-transitions: true;
 $enable-reduced-motion: false;
@@ -61,11 +61,14 @@ $headings-color: $ciao-gray-dark;
 $link-color: $secondary;
 $btn-link-color: #ffffff;
 
-$border-radius: 0.15em;
+$border-radius: 3px;
 $form-label-font-weight: 600;
 
 $tag-color: $ciao-blue;
 $outline: 3px $ciao-orange solid;
+
+$offcanvas-bg-color: $ciao-orange;
+$offcanvas-color: $ciao-white;
 
 $ciao-impact-critical: $ciao-purple;
 $ciao-impact-important: $ciao-red;
@@ -118,14 +121,37 @@ $ciao-minor-icon: $ciao-icon-minor-alt;
 
 @import "bootstrap/scss/bootstrap.scss";
 
+body {
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+}
+
 h1 {
-  color: $ciao-orange-light;
+  color: $ciao-orange;
   text-transform: uppercase;
 }
 
 h2 {
   font-size: 1.7em;
-  // text-shadow: 1px 1px 2px silver;
+}
+
+h2:after {
+  content: "";
+  display: block;
+  margin-bottom: 1.2rem;
+  width: 1.7em;
+  padding: 0;
+  border-bottom: 3px solid $ciao-orange-light;
+}
+
+h2.noafter:after {
+  display: none !important;
+}
+
+hr {
+  background-color: $ciao-white;
+  color: $ciao-white;
+  border-color: $ciao-white;
 }
 
 a[href^="http"]::after,
@@ -187,9 +213,8 @@ dt {
 
 dd {
   display: block;
-  margin-left: 1em;
+  margin-left: 0.5em;
 }
-
 
 .dl-inline {
   display: flex;
@@ -213,6 +238,16 @@ kbd {
   margin: 0.1em 0.1em;
   vertical-align: bottom;
   font-size: small;
+}
+
+.offcanvas * {
+  color: $ciao-white !important;
+
+  .offcanvas-header {
+    .btn-close {
+      color: $ciao-white;
+    }
+  }
 }
 
 .impact {
