@@ -54,8 +54,6 @@ function showCreateProjectModal() {
           id="offcanvasMenuLabel"
         >
           <small><i class="bi bi-archive"></i></small>
-          <!-- <router-link :to="{ name: 'home' }"><i class="bi bi-house-fill text-primary"></i></router-link>
-          <i class="bi bi-chevron-right"></i> -->
           Projets
         </h2>
         <button
@@ -64,7 +62,10 @@ function showCreateProjectModal() {
           data-bs-dismiss="offcanvas"
           aria-label="Fermer"
         >
-          <i class="bi bi-x-lg" aria-hidden="true"></i>
+          <i
+            class="bi bi-x-lg"
+            aria-hidden="true"
+          ></i>
         </button>
       </div>
       <hr
@@ -75,32 +76,30 @@ function showCreateProjectModal() {
 
         <!-- Liste des projets -->
         <ProjectList @projectSelected="hideMenu" />
+
         <!-- Bouton nouveau projet -->
-        <div class="d-grid gap-2">
+        <div class="d-grid mt-3">
           <button
             type="button"
-            class="btn btn-lg btn-default"
+            class="btn btn-light lh-lg"
             @click="showCreateProjectModal"
           >
-            <span class="text-dark">Créer un projet</span>
-            <i
-              class="bi bi-plus"
-              aria-hidden="true"
-            ></i>
+            <span class="fs-5 fw-bold">
+              Créer un projet +
+              <!-- <i
+                class="bi bi-plus"
+                aria-hidden="true"
+              ></i> -->
+            </span>
           </button>
         </div>
 
-        <!-- <div class="flex-grow-1">
-          <button
-            class="btn btn-light"
-            disabled
-          >Configuration</button>
-        </div> -->
       </div>
     </div>
   </div>
 
-<ProjectModal
-  v-model="projectModalVisible"
-  mode="create"
-/></template>
+  <ProjectModal
+    v-model="projectModalVisible"
+    mode="create"
+  />
+</template>

@@ -14,11 +14,20 @@ function toggleShowClosedProjects() {
 </script>
 
 <template>
-  <div v-if="projectStore?.projects" class="d-grid gap-2">
+  <div
+    v-if="projectStore?.projects"
+    class="d-grid gap-2"
+  >
 
     <!-- Project list -->
-    <nav v-if="true" class="nav list-group">
-      <template v-for="project in projectStore.projects" :key="project.id">
+    <nav
+      v-if="true"
+      class="list-group list-group-flush"
+    >
+      <template
+        v-for="project in projectStore.projects"
+        :key="project.id"
+      >
         <router-link
           v-if="showClosedProjects || !project.closed"
           :to="{ name: 'project', params: { project_id: project._id } }"
@@ -28,7 +37,9 @@ function toggleShowClosedProjects() {
             'text-black-50': project.closed,
             'fw-light': project.closed
           }"
-          @click="emit('projectSelected')">{{ project.title }}
+          :aria-current="project._id === currentProject?._id"
+          @click="emit('projectSelected')"
+        ><span>{{ project.title }}</span>
         </router-link>
       </template>
     </nav>
@@ -37,12 +48,19 @@ function toggleShowClosedProjects() {
 
     <!-- Show closed switch -->
     <div class="form-check form-switch">
-      <input class="form-check-input" type="checkbox" id="show-closed-projects" @input="toggleShowClosedProjects">
-      <label class="form-check-label" for="show-closed-projects">Inclure les projets terminés</label>
-    </div>
+      <input
+      class="form-check-input"
+      type="checkbox"
+      id="show-closed-projects"
+      @input="toggleShowClosedProjects"
+    >
+    <label
+      class="form-check-label"
+      for="show-closed-projects"
+    >Inclure les projets terminés</label>
+  </div>
 
-  </div>
-  <div v-else>
-    🤔 Aucun projet ici... 
-  </div>
-</template>e
+</div>
+<div v-else>
+  🤔 Aucun projet ici...
+</div></template>e

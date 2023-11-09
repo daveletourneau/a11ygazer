@@ -18,7 +18,7 @@ const showProjectModal = () => {
 </script>
 
 <template>
-  <div class="container">
+  <div class="container fade show">
 
     <div class="d-flex justify-content-center align-items-center">
       <h1
@@ -33,12 +33,12 @@ const showProjectModal = () => {
       <button
         v-if="currentProject"
         type="button"
-        class="btn btn-light my-3"
+        class="btn btn-outline-primary my-3"
         @click="showProjectModal"
         aria-label="Modifier le projet actuel"
       >
         <i
-          class="bi bi-gear-fill"
+          class="bi bi-pencil-fill"
           aria-hidden="true"
         ></i>
       </button>
@@ -68,8 +68,8 @@ const showProjectModal = () => {
             @click="navigate"
             :aria-current="currentRouteName === 'projectsummary' ? 'page' : false"
           >
-            <i class="bi bi-ui-checks"></i>
-            Sommaire
+            <i class="bi bi-easel" aria-label="sommaire"></i>
+            <span class="d-none d-md-inline" aria-hidden="true">Sommaire</span>
           </button>
         </router-link>
 
@@ -86,8 +86,8 @@ const showProjectModal = () => {
             @click="navigate"
             :aria-current="currentRouteName === 'projectissues' ? 'page' : false"
           >
-            <i class="bi bi-crosshair2"></i>
-            Problèmes
+            <i class="bi bi-crosshair" aria-label="problèmes"></i>
+            <span class="d-none d-md-inline" aria-hidden="true">Problèmes</span>
           </button>
         </router-link>
 
@@ -104,27 +104,26 @@ const showProjectModal = () => {
             @click="navigate"
             :aria-current="currentRouteName === 'projectreport' ? 'page' : false"
           >
-            <i class="bi bi-journal-richtext"></i>
-            Rapport
+            <i class="bi bi-journal-richtext" aria-label="rapport"></i>
+            <span class="d-none d-md-inline" aria-hidden="true">Rapport</span>
           </button>
         </router-link>
 
-        <!-- REPORT tab -->
+        <!-- CHECKLIST tab -->
         <router-link
-          :to="{ name: 'projectreport' }"
+          :to="{ name: 'projectchecklist' }"
           custom
           v-slot="{ navigate }"
         >
           <button
             role="tab"
             class="nav-link"
-            :class="{ 'active': currentRouteName === 'checklist' }"
+            :class="{ 'active': currentRouteName === 'projectchecklist' }"
             @click="navigate"
-            :aria-current="currentRouteName === 'projectreport' ? 'page' : false"
-            disabled
+            :aria-current="currentRouteName === 'projectchecklist' ? 'page' : false"
           >
-            <i class="bi bi-clipboard-check"></i>
-            Checklist
+            <i class="bi bi-clipboard-check" aria-label="checklist"></i>
+            <span class="d-none d-md-inline" aria-hidden="true">Checklist</span>
           </button>
         </router-link>
       </nav>

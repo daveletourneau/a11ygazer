@@ -1,9 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import ProjectView from '../views/ProjectView.vue'
-import ProjectSummaryView from '../views/ProjectSummaryView.vue'
-import ProjectIssuesView from '../views/ProjectIssuesView.vue'
-import ProjectReportView from '../views/ProjectReportView.vue'
+import HomeView from '@/views/HomeView.vue'
+import ProjectView from '@/views/ProjectView.vue'
+import ProjectSummaryView from '@/views/ProjectSummaryView.vue'
+import ProjectIssuesView from '@/views/ProjectIssuesView.vue'
+import ProjectReportView from '@/views/ProjectReportView.vue'
+import ProjectChecklistView from '@/views/ProjectChecklistView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -34,6 +35,11 @@ const router = createRouter({
           path: 'report',
           name: 'projectreport',
           component: ProjectReportView
+        },
+        {
+          path: 'checklist',
+          name: 'projectchecklist',
+          component: ProjectChecklistView
         },
       ]
     },

@@ -126,11 +126,11 @@ onMounted(() => {
         class="btn btn-sm btn-primary"
         @click="showNewIssueModal"
       >
+        <span>Ajouter un problème</span>
         <i
-          class="bi-plus-circle-fill"
+          class="bi-plus"
           aria-hidden="true"
         ></i>
-        Ajouter <span class="visually-hidden">un problème</span>
       </button>
 
       <fieldset>

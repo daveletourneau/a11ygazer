@@ -91,7 +91,7 @@ const openReport = () => {
           aria-label="Problèmes par niveau de criticité"
         >
           <div class="d-flex">
-            <dt class="flex-grow-1 impact impact-critical">Critiques :</dt>
+            <dt class="flex-grow-1"><i class="bi bi-exclamation-diamond-fill me-2 text-danger"></i>Critiques</dt>
             <dd>{{ project?.issuesFilteredBySeverity!('critical').value.length || 'aucun' }}
               <span v-if="project?.issuesFilteredBySeverity('critical').value.length">({{
                 Math.floor(project.issuesFilteredBySeverity('critical').value.length / project!.issues!.length * 100.0)
@@ -100,7 +100,7 @@ const openReport = () => {
             </dd>
           </div>
           <div class="d-flex">
-            <dt class="flex-grow-1 impact impact-important">Importants :</dt>
+            <dt class="flex-grow-1"><i class="bi bi-circle-fill me-2 text-primary"></i>Importants</dt>
             <dd>{{ project && project.issuesFilteredBySeverity &&
               project?.issuesFilteredBySeverity('important').value.length || 'aucun' }}
               <span v-if="project?.issuesFilteredBySeverity('important').value.length">({{
@@ -110,7 +110,7 @@ const openReport = () => {
             </dd>
           </div>
           <div class="d-flex">
-            <dt class="flex-grow-1 impact impact-moderate">Modérés :</dt>
+            <dt class="flex-grow-1"><i class="bi bi-circle-half me-2 text-warning"></i>Modérés</dt>
             <dd>{{ project && project.issuesFilteredBySeverity &&
               project?.issuesFilteredBySeverity('moderate').value.length || 'aucun' }}
               <span v-if="project?.issuesFilteredBySeverity('moderate').value.length">({{
@@ -120,7 +120,7 @@ const openReport = () => {
             </dd>
           </div>
           <div class="d-flex">
-            <dt class="flex-grow-1 impact impact-minor">Mineurs :</dt>
+            <dt class="flex-grow-1"><i class="bi bi-dash-circle me-2 text-warning"></i>Mineurs</dt>
             <dd>{{ project && project.issuesFilteredBySeverity &&
               project?.issuesFilteredBySeverity('minor').value.length
               || 'aucun' }}
@@ -192,12 +192,13 @@ const openReport = () => {
   <IssueModal
     v-model="issueModalVisible"
     mode="create"
-    size="modal-fullscreen"
+    size="modal-lg"
   />
 
   <PageModal
     v-model="pageModalVisible"
     mode="create"
+    size="modal-lg"
   />
 </template>
 
