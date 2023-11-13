@@ -3,7 +3,7 @@ import type { IPage } from '@/shared/interfaces';
 
 const props = defineProps<{
   page: IPage,
-  mode?: 'create' | 'edit'
+  mode?: 'create' | 'edit' | 'page' | 'listitem' | 'default'
 }>()
 
 function getCoverImage(filename: string | undefined): string {
@@ -15,19 +15,16 @@ function getCoverImage(filename: string | undefined): string {
 <template>
 
   <!-- GRID (default mode)-->
-  <div role="listitem" v-if="mode === 'griditem' || mode === 'default' || !mode">
+  <div role="listitem" v-if="mode === 'listitem' || mode === 'default' || !mode">
     <a href="#" class="card shadow-sm text-decoration-none" tabindex="0">
       <img
-        :src="getCoverImage(props.issue.images ? props.issue.images[0] : undefined)"
+        :src="getCoverImage(props.page.images ? props.page.images[0] : undefined)"
         class="img-fluid object-fit-cover card-image"
         alt="">
       <div class="card-body border-top">
-        <h3 class="card-title">{{ props.issue.title }}</h3>
+        <h3 class="card-title">{{ props.page.title }}</h3>
         <div class="d-flex flex-column w-100">
-          <p class="card-subtitle" :class="getImpactClass(props.issue.severity)">
-            Problème {{ impactLabels[props?.issue.severity || 'moderate'] }}
-          </p>
-          <p class="card-text text-wrap text-truncate">{{ props.issue.description }}</p>
+          <p class="card-text text-wrap text-truncate">{{ props.page.description }}</p>
         </div>
       </div>
     </a>
@@ -37,9 +34,9 @@ function getCoverImage(filename: string | undefined): string {
   <div role="listitem" v-if="mode === 'listitem'">
     <a href="#" class="text-decoration-none text-black">
       <div class="d-flex flex-column w-100">
-        <h3 class="card-title">{{ props.issue.title }}</h3>
-        <div class="card-subtitle" :class="getImpactClass(props.issue.severity)">Problème {{ impactLabels[props?.issue.severity || 'moderate'] }}</div>
-        <p class="float-right">{{ props.issue.description }}</p>
+        <h3 class="card-title">{{ props.page.title }}</h3>
+        <div class="card-subtitle">Page</div>
+        <p class="float-right">{{ props.page.description }}</p>
       </div>
     </a>
   </div>

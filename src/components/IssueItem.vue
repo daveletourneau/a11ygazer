@@ -65,8 +65,10 @@ function getCoverImage(filename?: string): string {
 
         <div class="d-flex align-items-center">
           <h3 class="card-title flex-grow-1">{{ props.issue.title }}</h3>
-          <div class="card-subtitle" :class="getImpactClass(props.issue.severity)">Problème {{
-            impactLabels[props?.issue.severity || 'moderate'] }}</div>
+          <div class="card-subtitle" :class="getImpactClass(props.issue.severity)"><span class="d-none d-md-inline">
+            Problème {{
+              impactLabels[props?.issue.severity || 'moderate'] }}
+          </span></div>
         </div>
         <p class="text-wrap text-truncate" v-html="marked.parse(props.issue.description || '')"></p>
 

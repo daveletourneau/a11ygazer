@@ -8,7 +8,7 @@ import type { IIssue, IPage, IProject as ISharedProject } from '../shared/interf
 import type { TIssueSeverity } from '../shared/types'
 
 // const apiUrl = import.meta.env.VUE_APP_API_URL
-const apiUrl = 'http://192.168.0.175:3000'
+const apiUrl = 'http://a11ygazer.netfretsec.com:3000'
 
 // TODO: PageStore??
 function createPageObject(partialPage: Partial<IPage>): IPage {

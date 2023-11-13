@@ -20,38 +20,20 @@ const showProjectModal = () => {
 <template>
   <div class="container fade show">
 
-    <div class="d-flex justify-content-center align-items-center">
-      <h1
-        id="page-title"
-        class="flex-grow-1"
-      >{{ currentProject?.title }}
+    <div
+      class="d-flex w-100"
+      v-if="currentProject"
+    >
+      <h1 id="page-title" class="flex-grow-1">{{ currentProject?.title }}
         <small
           v-if="currentProject?.closed"
           class="text-muted"
         >(fermé)</small>
       </h1>
-      <button
-        v-if="currentProject"
-        type="button"
-        class="btn btn-outline-primary my-3"
-        @click="showProjectModal"
-        aria-label="Modifier le projet actuel"
-      >
-        <i
-          class="bi bi-pencil-fill"
-          aria-hidden="true"
-        ></i>
-      </button>
-    </div>
-
-    <div
-      v-if="currentProject"
-      class="list-group"
-    >
 
       <!-- Tabbed navigation -->
       <nav
-        class="nav nav-tabs mb-3"
+        class="nav nav-pills"
         aria-labelledby="page-title"
       >
 
@@ -63,13 +45,17 @@ const showProjectModal = () => {
         >
           <button
             role="tab"
-            class="nav-link"
+            class="nav-link fs-1 rounded-circle"
             :class="{ 'active': currentRouteName === 'projectsummary' }"
             @click="navigate"
             :aria-current="currentRouteName === 'projectsummary' ? 'page' : false"
+            aria-label="Sommaire"
           >
-            <i class="bi bi-easel" aria-label="sommaire"></i>
-            <span class="d-none d-md-inline" aria-hidden="true">Sommaire</span>
+            <i class="bi bi-easel d-inline-block" style="width:1em !important;height:1em !important;"></i>
+            <span
+              class="d-none"
+              aria-hidden="true"
+            >Sommaire</span>
           </button>
         </router-link>
 
@@ -81,13 +67,14 @@ const showProjectModal = () => {
         >
           <button
             role="tab"
-            class="nav-link"
+            class="nav-link fs-2 rounded-circle"
             :class="{ 'active': currentRouteName === 'projectissues' }"
             @click="navigate"
             :aria-current="currentRouteName === 'projectissues' ? 'page' : false"
+            aria-label="Problèmes"
           >
-            <i class="bi bi-crosshair" aria-label="problèmes"></i>
-            <span class="d-none d-md-inline" aria-hidden="true">Problèmes</span>
+            <i class="bi bi-crosshair d-inline-block" style="width:1em !important;height:1em !important;"></i>
+            <span class="d-none">Problèmes</span>
           </button>
         </router-link>
 
@@ -99,13 +86,17 @@ const showProjectModal = () => {
         >
           <button
             role="tab"
-            class="nav-link"
+            class="nav-link fs-2 rounded-circle"
             :class="{ 'active': currentRouteName === 'projectreport' }"
             @click="navigate"
             :aria-current="currentRouteName === 'projectreport' ? 'page' : false"
+            aria-label="Rapport"
           >
-            <i class="bi bi-journal-richtext" aria-label="rapport"></i>
-            <span class="d-none d-md-inline" aria-hidden="true">Rapport</span>
+            <i class="bi bi-journal-richtext d-inline-block" style="width:1em !important;height:1em !important;"></i>
+            <span
+              class="d-none"
+              aria-hidden="true"
+            >Rapport</span>
           </button>
         </router-link>
 
@@ -117,23 +108,41 @@ const showProjectModal = () => {
         >
           <button
             role="tab"
-            class="nav-link"
+            class="nav-link fs-2 rounded-circle"
             :class="{ 'active': currentRouteName === 'projectchecklist' }"
             @click="navigate"
             :aria-current="currentRouteName === 'projectchecklist' ? 'page' : false"
+            aria-label="Checklist"
           >
-            <i class="bi bi-clipboard-check" aria-label="checklist"></i>
-            <span class="d-none d-md-inline" aria-hidden="true">Checklist</span>
+            <i class="bi bi-clipboard-check d-inline-block" style="width:1em !important;height:1em !important;"></i>
+            <span
+              class="d-none"
+              aria-hidden="true"
+            >Checklist</span>
           </button>
         </router-link>
+
+        <button
+          role="tab"
+          class="nav-link fs-2 rounded-circle"
+          :class="{ 'active': projectModalVisible }"
+          @click="showProjectModal"
+          aria-label="Propriétés du projet"
+        >
+          <i
+            class="bi bi-pencil"
+            aria-hidden="true"
+          ></i>
+        </button>
+
       </nav>
 
-      <div role="tabpanel">
-        <router-view />
-      </div>
-
     </div>
-    <div v-else class="fs-1">😞</div>
+
+    <div role="tabpanel">
+      <router-view />
+    </div>
+
   </div>
 
   <ProjectModal
