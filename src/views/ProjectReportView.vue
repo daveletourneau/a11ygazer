@@ -4,7 +4,7 @@
 
 
 <template>
-  <section class="d-block mb-3 text-center">
+  <section class="d-block mb-3 text-center opacity-50">
     <a
       href="/mock-report.html"
       target="_blank"
@@ -12,7 +12,7 @@
     >Ouvrir le rapport dans une nouvelle fenêtre</a>
   </section>
 
-  <section class="d-block">
+  <section class="d-block opacity-50">
     <iframe
       src="/mock-report.html"
       frameborder="1"

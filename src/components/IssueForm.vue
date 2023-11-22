@@ -116,71 +116,41 @@ watch(numericImpact, () => {
       </select>
     </div>
 
+    <!-- WCAG crit. -->
     <div class="mb-3">
       <label
-        for="issue-type"
+        for="ms-critera"
         class="form-label"
-      >Impact
-        <span
-          class="text-danger"
-          aria-hidden="true"
-        >*</span>
-      </label>
-      <div class="btn-group-vertical w-100">
-        <input
-          type="radio"
-          v-model="tempIssue.severity"
-          class="btn-check"
-          value="critical"
-          name="severity"
-          id="option1"
-          autocomplete="off"
-        >
-        <label
-          class="btn btn-light btn-sm text-start"
-          :class="{ btnDanger: true }"
-          for="option1"
-        ><span class="impact impact-critical">Critique</span></label>
-        <input
-          type="radio"
-          v-model="tempIssue.severity"
-          class="btn-check"
-          value="important"
-          name="severity"
-          id="option2"
-          autocomplete="off"
-        >
-        <label
-          class="btn btn-light btn-sm text-start"
-          for="option2"
-        ><span class="impact impact-important">Important</span></label>
-        <input
-          type="radio"
-          v-model="tempIssue.severity"
-          class="btn-check"
-          value="moderate"
-          name="severity"
-          id="option3"
-          autocomplete="off"
-        >
-        <label
-          class="btn btn-light btn-sm text-start"
-          for="option3"
-        ><span class="impact impact-moderate">Modéré</span></label>
-        <input
-          type="radio"
-          v-model="tempIssue.severity"
-          class="btn-check"
-          value="minor"
-          name="severity"
-          id="option4"
-          autocomplete="off"
-        >
-        <label
-          class="btn btn-light btn-sm text-start"
-          for="option4"
-        ><span class="impact impact-minor">Mineur</span></label>
-      </div>
+      >Critère(s) WCAG apparenté(s)</label>
+      <Multiselect
+        id="ms-critera"
+        mode="tags"
+        v-model="tempIssue.wcagCritera"
+        :options="msOptions"
+        :searchable="true"
+        :breakTags="true"
+      ></Multiselect>
+    </div>
+
+    <!-- TAGS -->
+    <!-- TODO: options en function -->
+    <div class="mb-3">
+      <label
+        for="ms-tags"
+        class="form-label"
+      >Étiquettes</label>
+      <Multiselect
+        id="ms-tags"
+        mode="tags"
+        v-model="tempIssue.tags"
+        :options="[
+          { value: 'awaiting_validation', label: 'à vérifier', icon: '', color: '#ff3300' },
+          { value: 'paused', label: 'en attente', icon: '', color: '#ff8800' },
+          { value: 'verified', label: 'vérifié', icon: '', color: '#ffcc00' },
+        ]"
+        :searchable="true"
+        :createOption="true"
+      />
     </div>
 
     <!-- SEVERITY BUTTONS HORIZONTAL -->
@@ -252,7 +222,7 @@ watch(numericImpact, () => {
     </div>
 
     <!-- SEVERITY RANGE -->
-    <div class="mb-3">
+    <!-- <div class="mb-3">
       <label
         for="severity-range"
         class="form-label"
@@ -269,7 +239,7 @@ watch(numericImpact, () => {
         step="1"
         id="severity-range"
       >
-    </div>
+    </div> -->
 
     <!-- DESCRIPTION -->
     <div class="mb-3">
@@ -302,10 +272,10 @@ watch(numericImpact, () => {
     </div>
 
     <!-- PAGES -->
-    <div class="mb-3">
+    <!-- <div class="mb-3">
       <label
         for="select-pages"
-        class="form-label"
+        class="form-label" 
       >Pages présentant ce problème</label>
       <select
         class="form-select"
@@ -317,7 +287,7 @@ watch(numericImpact, () => {
         <option value="2">Comment nous joindre</option>
         <option value="3">Détails des activités</option>
       </select>
-    </div>
+    </div> -->
 
     <!-- RESOLVED -->
     <div class="form-check mb-3">
@@ -326,63 +296,12 @@ watch(numericImpact, () => {
         type="checkbox"
         id="issue-resolved"
         v-model="tempIssue.resolved"
+        disabled
       />
       <label
         for="issue-resolved"
         class="form-label"
       >Résolu</label>
-    </div>
-
-    <!-- RESOLVED (switch) -->
-    <div class="form-check form-switch mb-3">
-      <input
-        class="form-check-input"
-        type="checkbox"
-        role="switch"
-        id="toggle-resolved"
-        v-model="tempIssue.resolved"
-      >
-      <label
-        class="form-check-label"
-        for="toggle-resolved"
-      >Résolu</label>
-    </div>
-
-    <!-- WCAG crit. -->
-    <div class="mb-3">
-      <label
-        for="ms-critera"
-        class="form-label"
-      >Critère(s) WCAG apparenté(s)</label>
-      <Multiselect
-        id="ms-critera"
-        mode="tags"
-        v-model="tempIssue.wcagCritera"
-        :options="msOptions"
-        :searchable="true"
-        :breakTags="true"
-      ></Multiselect>
-    </div>
-
-    <!-- TAGS -->
-    <!-- TODO: options en function -->
-    <div class="mb-3">
-      <label
-        for="ms-tags"
-        class="form-label"
-      >Étiquettes</label>
-      <Multiselect
-        id="ms-tags"
-        mode="tags"
-        v-model="tempIssue.tags"
-        :options="[
-          { value: 'awaiting_validation', label: 'à vérifier', icon: '', color: '#ff3300' },
-          { value: 'paused', label: 'en attente', icon: '', color: '#ff8800' },
-          { value: 'verified', label: 'vérifié', icon: '', color: '#ffcc00' },
-        ]"
-        :searchable="true"
-        :createOption="true"
-      />
     </div>
 
     <!-- IMAGES -->
@@ -395,6 +314,7 @@ watch(numericImpact, () => {
         class="form-control"
         type="file"
         id="file-images"
+        disabled
       >
     </div>
 

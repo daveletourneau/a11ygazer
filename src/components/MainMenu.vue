@@ -47,7 +47,7 @@ function showCreateProjectModal() {
     aria-labelledby="offcanvasMenuLabel"
   >
 
-    <div class="d-flex flex-column h-100">
+    <div class="d-flex flex-column justify-content-between" style="height:100%;">
       <div class="offcanvas-header">
         <h2
           class="offcanvas-title noafter"
@@ -68,28 +68,32 @@ function showCreateProjectModal() {
           ></i>
         </button>
       </div>
+
       <hr
         class="border-light opacity-100 my-1"
         aria-hidden="true"
       >
-      <div class="offcanvas-body">
+
+      <div class="d-flex flex-column flex-grow-1 align-content-">
 
         <!-- Liste des projets -->
-        <ProjectList @projectSelected="hideMenu" />
+        <div class="flex-grow-1 mt-3">
+          <ProjectList @projectSelected="hideMenu" />
+        </div>
 
         <!-- Bouton nouveau projet -->
         <div class="d-grid mt-3">
           <button
             type="button"
-            class="btn btn-light lh-lg"
+            class="btn btn-light m-3"
             @click="showCreateProjectModal"
           >
-            <span class="fs-5 fw-bold">
-              Créer un projet +
-              <!-- <i
+            <span>
+              Créer un projet
+              <i
                 class="bi bi-plus"
                 aria-hidden="true"
-              ></i> -->
+              ></i>
             </span>
           </button>
         </div>

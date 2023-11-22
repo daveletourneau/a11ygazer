@@ -9,7 +9,7 @@ import { Modal } from 'bootstrap'
 
 const props = defineProps<{
   modelValue: boolean
-  mode: 'create' | 'edit' | 'display'
+  mode: 'create' | 'edit' | 'display' | 'default'
 }>()
 
 const emit = defineEmits<{

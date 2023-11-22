@@ -25,7 +25,6 @@ onMounted(() => {
 </script>
 
 <template>
-
   <!-- MENU -->
   <div class="mb-4">
     <MainMenu />
@@ -35,5 +34,4 @@ onMounted(() => {
   <main>
     <router-view />
   </main>
-
 </template>

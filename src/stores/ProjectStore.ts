@@ -41,7 +41,6 @@ function createIssueObject(partialIssue: Partial<IIssue>): IIssue {
   return issue
 }
 
-
 // Interface frontend
 interface IProject extends ISharedProject {
   addPage(page: IPage): string,
@@ -59,10 +58,10 @@ function createProjectObject(partialProject: Partial<IProject>): IProject {
     created: partialProject.created,
     closed: partialProject.closed,
     client: partialProject.client,
-    tags: partialProject.tags || [],
-    pages: partialProject.pages || [],
-    issues: partialProject.issues || [],
-    images: partialProject.images || [],
+    tags: partialProject.tags,
+    pages: partialProject.pages,
+    issues: partialProject.issues,
+    images: partialProject.images,
 
     addPage: (newPage: IPage): string => {
       const page: IPage = createPageObject(newPage)

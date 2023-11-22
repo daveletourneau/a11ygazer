@@ -3,10 +3,8 @@
 
 
 <template>
-  <fieldset>
+  <fieldset class="opacity-50">
     <legend>Validations</legend>
-
-    <!-- <div v-for="" :key=""></div> -->
 
     <div class="input-group mb-3">
       <div class="input-group-text">
@@ -14,7 +12,6 @@
       </div>
       <input type="text" class="form-control" aria-label="Text input with checkbox">
     </div>
-
     <div class="input-group">
       <div class="input-group-text">
         <input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input">

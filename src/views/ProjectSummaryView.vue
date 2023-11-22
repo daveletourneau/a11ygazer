@@ -5,6 +5,7 @@ import { Marked } from 'marked'
 import PageList from '@/components/pageList.vue'
 import IssueModal from '@/components/IssueModal.vue'
 import PageModal from '@/components/PageModal.vue'
+import ProjectInfos from '@/components/ProjectInfos.vue'
 
 const marked = new Marked()
 const projectStore = useProjectStore()
@@ -18,10 +19,6 @@ const showIssueModal = () => {
 
 const showPageModal = () => {
   pageModalVisible.value = true
-}
-
-const openReport = () => {
-  window.open('/mcn.html', '', 'width=850,height=1100')
 }
 </script>
 
@@ -44,33 +41,7 @@ const openReport = () => {
         aria-label="Projet"
         class="bg-light p-3"
       >
-        <h2 id="lbl-pages">Détails</h2>
-
-        <dl v-if="project">
-          <div v-if="project.client">
-            <dt>Client</dt>
-            <dd>{{ project.client }}</dd>
-          </div>
-          <div v-if="project.conformity">
-            <dt>Standard de référence</dt>
-            <dd>{{ project.conformity }}</dd>
-          </div>
-          <div v-if="project.created">
-            <dt>Date de création</dt>
-            <dd>{{ new Date(project.created).toDateString() }}</dd>
-          </div>
-        </dl>
-
-        <div class="d-grid mt-3">
-          <button
-            @click="openReport"
-            class="btn btn-primary"
-          >
-            <span>Imprimer le rapport</span>
-            <i class="bi bi-printer ms-2"></i>
-          </button>
-        </div>
-
+        <ProjectInfos :project="project" />
       </section>
 
       <!-- ISSUES OVERVIEW -->
