@@ -235,8 +235,10 @@ onMounted(() => {
     </section>
   </div>
 
-  <div v-else>
-    <i class="bi bi-patch-question"></i>Pas de problématiques saisies pour ce projet...
+  <div v-else class="d-grid">
+    <div class="fs-1">
+      🤔
+    </div>
   </div>
 
   <IssueModal
@@ -246,3 +248,25 @@ onMounted(() => {
     size="modal-lg"
   />
 </template>
+
+<styles lang="scss">
+.ag-theme-alpine {
+  --ag-header-column-separator-display: block;
+  --ag-header-column-separator-height: 100%;
+  --ag-header-column-separator-width: 2px;
+  --ag-header-column-separator-color: purple;
+
+  --ag-header-column-resize-handle-display: block;
+  --ag-header-column-resize-handle-height: 25%;
+  --ag-header-column-resize-handle-width: 5px;
+  --ag-header-column-resize-handle-color: orange;
+}
+
+.ag-theme-alpine .ag-header {
+  background-color: #4b79c3;
+}
+
+.ag-theme-alpine .ag-header-group-cell {
+  font-weight: normal;
+  font-size: 22px;
+}</styles>

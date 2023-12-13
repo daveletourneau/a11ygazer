@@ -19,9 +19,31 @@ const openReport = () => {
 
 <template>
   <div v-if="project">
-    <h2 id="lbl-pages">Détails</h2>
 
-    <dl v-if="project">
+    <div class="d-flex">
+      <h2
+        id="lbl-pages"
+        class="flex-grow-1"
+      >Détails</h2>
+      <div>
+        <button
+          role="tab"
+          class="btn btn-outline-primary"
+          :class="{ 'active': projectModalVisible }"
+          @click="showProjectModal"
+          aria-label="Modifier le projet"
+          title="Modifier"
+        >
+          <span class="visually-hidden">Modifier</span>
+          <i
+            class="bi bi-pencil"
+            aria-hidden="true"
+          ></i>
+        </button>
+      </div>
+    </div>
+
+    <dl>
       <div v-if="project.client">
         <dt>Client</dt>
         <dd>{{ project.client }}</dd>
@@ -38,28 +60,6 @@ const openReport = () => {
 
     <div class="d-grid mt-3">
       <button
-        role="tab"
-        class="btn btn-primary"
-        :class="{ 'active': projectModalVisible }"
-        @click="showProjectModal"
-        aria-label="Modifier le projet"
-        title="Modifier"
-      >
-        <span
-          class="d-none d-lg-inline"
-          aria-hidden="true"
-        >
-          Modifier
-        </span>
-        <i
-          class="bi bi-pencil"
-          aria-hidden="true"
-        ></i>
-      </button>
-    </div>
-
-    <div class="d-grid mt-3">
-      <button
         @click="openReport"
         class="btn btn-primary"
       >
@@ -68,11 +68,10 @@ const openReport = () => {
       </button>
     </div>
 
+    <ProjectModal
+      v-if="project"
+      v-model="projectModalVisible"
+      mode="edit"
+    />
   </div>
-
-  <ProjectModal
-    v-if="project"
-    v-model="projectModalVisible"
-    mode="edit"
-  />
 </template>
